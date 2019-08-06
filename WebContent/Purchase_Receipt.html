@@ -1,0 +1,150 @@
+<!-- Jiangfeng Li -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.container {
+	background-color: lightblue;
+	border: 10px solid grey;
+	padding: 20px;
+	border-style: outset;
+	float: left;
+}
+
+legend {
+	display: block;
+	padding-left: 2px;
+	padding-right: 2px;
+	border-color: grey
+}
+
+.right {
+	float: left;
+	text-align: right;
+	margin: 1px;
+}
+
+.left {
+	float: left;
+	margin: 1px;
+}
+
+.space {
+	margin: 10px;
+	overflow: hidden;
+}
+
+.middle {
+	margin: 0 auto;
+	display: block;
+}
+</style>
+</head>
+<body>
+	<h1>Widget Purchase</h1>
+	<div class="container">
+		<form onsubmit="jsFunction()">
+			<div class="space">
+				<div class="right">First Name</div>
+				<div class="left">
+					<input type="text" name="firstName" pattern="[A-Z a-z]*"
+						id="firstName" required autocomplete='given-name'>
+				</div>
+			</div>
+			<div class="space">
+				<div class="right">Last Name</div>
+				<div class="left">
+					<input type="text" name="lastName" pattern="[A-Z a-z]*"
+						id="lastName" required autocomplete='family-name'>
+				</div>
+			</div>
+           <div class="space">
+			<div class="right"> Phone </div> 
+			<div class="left">
+			<input type="text" name="phone" pattern="^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
+				id="PhoneNumber" required autocomplete='tel-national'>
+				</div> 
+			</div>
+			<div class="space">
+			  <div class="right"> City </div> 
+			  <div class="left">
+			  <input type="text" name="phone" pattern="[A-Z a-z]*" id="city"
+				required autocomplete='City'> </div>
+			</div>
+				
+				
+			<div class="space"> 
+			  <div class="right"> State </div>
+			  <div class="left">
+			  <select name="States" id="state">
+				<option value="AZ">Arizona</option>
+				<option value="CA">California</option>
+				<option value="TX">Texas</option>
+				<option value="OH">Ohio</option>
+			</select> 
+			</div>
+			</div> 
+			
+			<div class="space"> 
+			<div class="right"> Zip </div>
+			<div class="left">
+			<input type="text" name="Zip" pattern="[0-9]{5}"
+				id="zip" required autocomplete='City'> </div>
+			</div>
+
+			<fieldset>
+				<legend>Size</legend>
+				<input type="radio" name="size" value="small"> Small $2.00<br>
+				<input type="radio" name="size" value="medium"> Medium $2.65<br>
+				<input type="radio" name="size" value="large"> Large $2.99
+			</fieldset>
+
+              <input type="number" id="quantity" min="1" max="5"
+						required> Quantity (1..5) 
+	
+	<input type="submit" value="Continue" class="middle">
+
+	</form>
+   </div>
+	<script>
+		function jsFunction() {
+			var firstNameInput = document.getElementById("firstName").value;
+			var lastNameInput = document.getElementById("lastName").value;
+			var PhoneNumberInput = document.getElementById("PhoneNumber").value;
+			var CityInput = document.getElementById("city").value;
+			var zipInput = document.getElementById("zip").value;
+			var quantity = document.getElementById("quantity").value;
+			var d = new Date();
+			//var size = document.getElementById("size").value;
+			var size = "small";
+			var First_Name = document.getElementById("firstName").value;
+			var Last_Name = document.getElementById("lastName").value;
+			var City = document.getElementById("city").value;
+			var State = document.getElementById("state").value;
+			var Zip = document.getElementById("zip").value;
+			var price;
+			if (size == "small")
+				price = "2.00";
+			else if (size == "medium")
+				price = "2.65";
+			else if (size == "large")
+				price = "2.99";
+			//document.getElementById("demo").innerHTML = d.toDateString();
+			document.write("<h3>Receipt</h3><br>");
+			document.write("Purchase date: " + d.toDateString() + '<br>');
+			document.write("Purchased 1 item(s) of size " + size + " at "
+					+ price + " each<br>");
+			document.write("Total cost $" + price + "<br>");
+			document.write("<fieldset>");
+			document.write("<legend>Ship to:</legend>");
+			document.write(First_Name + " " + Last_Name + '<br>');
+			document.write(City + ", " + State + '<br>');
+			document.write(Zip);
+			document.write("</fieldset>");
+		}
+	</script>
+
+</body>
+</html>
